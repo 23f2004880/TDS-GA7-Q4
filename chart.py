@@ -24,9 +24,8 @@ for dept in departments:
 
 df = pd.DataFrame(data, columns=["Month", "Department", "Revenue"])
 
-# Create figure with exact dimensions for 512x512 px
-# figsize (inches) * dpi = pixels → 5.12 * 100 = 512
-plt.figure(figsize=(5.12, 5.12), dpi=100)
+# Create figure (8x8 inches, dpi=64 → 512x512 pixels)
+plt.figure(figsize=(8, 8))
 
 # Lineplot
 sns.lineplot(
@@ -39,13 +38,13 @@ sns.lineplot(
 )
 
 # Titles and labels
-plt.title("Monthly Revenue Trends by Department (2023)", fontsize=14, weight="bold")
+plt.title("Monthly Revenue Trends by Department (2023)", fontsize=16, weight="bold")
 plt.xlabel("Month", fontsize=12)
 plt.ylabel("Revenue (USD)", fontsize=12)
 
 # Rotate x-axis labels
 plt.xticks(rotation=45)
 
-# Save without bbox_inches="tight" to preserve exact dimensions
-plt.savefig("chart.png", dpi=100)
+# Save with exact output requirement
+plt.savefig("chart.png", dpi=64, bbox_inches="tight")
 plt.close()
